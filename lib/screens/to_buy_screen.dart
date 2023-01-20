@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:to_buy/components/wished_item_card.dart';
+import 'package:to_buy/components/wished_item_form.dart';
 import 'package:to_buy/providers/wished_list.dart';
 
 class ToBuyScreen extends StatelessWidget {
@@ -15,8 +16,11 @@ class ToBuyScreen extends StatelessWidget {
         title: const Text("To buy"),
         actions: [
           IconButton(
-            onPressed: () {
-
+            onPressed: () async {
+              await showDialog(
+                context: context, 
+                builder: (context) => const WishedItemForm(),
+              );
             }, 
             icon: const Icon(
               Icons.add_rounded
