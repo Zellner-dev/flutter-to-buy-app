@@ -1,5 +1,8 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:to_buy/model/wished_item.dart';
+
 class WishedItemCard extends StatelessWidget {
 
   const WishedItemCard({
@@ -13,9 +16,10 @@ class WishedItemCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Dismissible(
       onDismissed: (dissmis) {
-        print("hello world");
+        // Provider.of<WishedList>(context, listen: false).removeItem(item.id);
       },
-      key: Key(""),
+      direction: DismissDirection.endToStart,
+      key: Key(Random().nextDouble().toString()),
       child: Card(
         child: ListTile(
           title: Text(item.name),

@@ -27,6 +27,10 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: currentPage(),
       bottomNavigationBar: BottomNavigationBar(
+        currentIndex: currentPageIndex,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.grey,
+        backgroundColor: Theme.of(context).colorScheme.primary,
         onTap: (value) {
           setState(() {
             currentPageIndex = value;
@@ -42,7 +46,7 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
             label: "Bought",
             icon: Icon(
-              Icons.attach_money_rounded
+              Icons.done_rounded
             )
           ),
         ]

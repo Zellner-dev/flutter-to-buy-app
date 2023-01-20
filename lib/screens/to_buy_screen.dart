@@ -13,12 +13,26 @@ class ToBuyScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("To buy"),
+        actions: [
+          IconButton(
+            onPressed: () {
+
+            }, 
+            icon: const Icon(
+              Icons.add_rounded
+            )
+          )
+        ],
       ),
-      body: ListView.builder(
-        itemCount: wishedList.items.length,
-        itemBuilder: (context, index) {
-          return WishedItemCard(item: wishedList.items[index]);
-        },
+      body: Consumer<WishedList>(
+        builder: (context, wished, child) {
+          return ListView.builder(
+            itemCount: wishedList.items.length,
+            itemBuilder: (context, index) {
+              return WishedItemCard(item: wishedList.items[index]);
+            },
+          );
+        }
       ),
     );
   }
