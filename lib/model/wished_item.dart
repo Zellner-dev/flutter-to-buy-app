@@ -1,15 +1,22 @@
-class WishedItem {
+import 'package:flutter/cupertino.dart';
+
+class WishedItem with ChangeNotifier{
   final String id;
   final String name;
   final double avgValue;
-  final String urlImage;
-  final bool isBought;
+  final String url;
+  bool isBought;
 
   WishedItem({
     required this.id,
     required this.name,
     required this.avgValue,
-    required this.urlImage,
+    required this.url,
     required this.isBought,
   });
+
+  void toggleIsBought() {
+    isBought = !isBought;
+    notifyListeners();
+  }
 }

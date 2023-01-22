@@ -1,7 +1,9 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:to_buy/model/wished_item.dart';
+import 'package:to_buy/providers/wished_list.dart';
 
 class WishedItemCard extends StatelessWidget {
 
@@ -16,7 +18,7 @@ class WishedItemCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Dismissible(
       onDismissed: (dissmis) {
-        // Provider.of<WishedList>(context, listen: false).removeItem(item.id);
+        item.toggleIsBought();
       },
       direction: DismissDirection.endToStart,
       key: Key(Random().nextDouble().toString()),
@@ -24,7 +26,7 @@ class WishedItemCard extends StatelessWidget {
         child: ListTile(
           title: Text(item.name),
           subtitle: Text(item.name),
-          trailing: Text(item.avgValue.toStringAsFixed(2)),
+          trailing: Text("R\$${item.avgValue.toStringAsFixed(2)}"),
           leading: const CircleAvatar(
             backgroundColor: Colors.red,
           ),

@@ -9,7 +9,7 @@ class WishedList with ChangeNotifier {
       id: Random().nextDouble().toString(), 
       name: "Bolsa Dell", 
       avgValue: 200, 
-      urlImage: "urlImage", 
+      url: "urlImage", 
       isBought: false
     )
   ];
@@ -18,10 +18,25 @@ class WishedList with ChangeNotifier {
     return [..._items];
   }
 
+  List<WishedItem> get toBuyList {
+    final list = _items.where((item) => item.isBought == false).toList();
+    return list;
+  }
+
+  List<WishedItem> get boughtList {
+    final list = _items.where((item) => item.isBought == true).toList();
+    return list;
+  }
+
   void removeItem(String id) {
     _items.remove(
       _items.firstWhere((item) => item.id == id)
     );
+    notifyListeners();
+  }
+
+  void addItem(WishedItem wishedItem){
+    _items.add(wishedItem);
     notifyListeners();
   }
 }

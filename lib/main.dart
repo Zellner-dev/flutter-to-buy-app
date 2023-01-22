@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
         title: 'To Buy App,',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
+          fontFamily: "Open Sans",
           colorScheme: Theme.of(context).colorScheme.copyWith(
             primary: const Color(0XFF541431),
             secondary: const Color (0XFF8f0744)

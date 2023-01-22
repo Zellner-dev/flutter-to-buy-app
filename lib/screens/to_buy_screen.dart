@@ -9,6 +9,7 @@ class ToBuyScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     final wishedList = Provider.of<WishedList>(context);
 
     return Scaffold(
@@ -31,9 +32,9 @@ class ToBuyScreen extends StatelessWidget {
       body: Consumer<WishedList>(
         builder: (context, wished, child) {
           return ListView.builder(
-            itemCount: wishedList.items.length,
+            itemCount: wishedList.toBuyList.length,
             itemBuilder: (context, index) {
-              return WishedItemCard(item: wishedList.items[index]);
+              return WishedItemCard(item: wishedList.toBuyList[index]);
             },
           );
         }
